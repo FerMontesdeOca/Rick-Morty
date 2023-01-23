@@ -1,11 +1,15 @@
 import basicCard from "./basicCard.js";
 
-const getCharacters = async() =>{
-    const response = await fetch('https://rickandmortyapi.com/api/character');
+const getCharacters = async(page) =>{
+    let url = `https://rickandmortyapi.com/api/character/?page=${page}`
+    const response = await fetch(url);
     const data = await response.json();
-    const character = data.results;
+    let character = data.results;
     basicCard(character);
+    console.log(url)
 }
 getCharacters();
 
 
+
+export default getCharacters;

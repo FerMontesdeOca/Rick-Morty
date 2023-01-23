@@ -8,8 +8,8 @@ const details = () => {
   section.appendChild(container);
 
   const detail = document.createElement("h1");
-  title.textContent = "Characters";
-  container.classList.add("justify-content-center", "align-middle");
+  title.textContent = "Character";
+  container.classList.add("justify-content-center", "align-middle", "text-white");
   container.appendChild(detail);
 
   const card = document.createElement("div");
