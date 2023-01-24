@@ -20,13 +20,13 @@ const botones =() =>{
 
   const anterior = document.createElement("Button");
     anterior.textContent = "Anterior"
-    anterior.classList.add("btn", "btn-primary", "my-2", "d-flex", "align-item-end", "justify-content-end")
+    anterior.classList.add("btn", "btn-primary", "my-2", "d-flex", "align-item-end", "justify-content-end", "btn__cards")
     anterior.addEventListener('click',()=> restar())
    buttons.appendChild(anterior);
 
   const siguienteBtn = document.createElement("Button");
     siguienteBtn.textContent = "Siguiente"
-    siguienteBtn.classList.add("btn", "btn-primary", "my-2", "d-flex", "align-item-end", "justify-content-end")
+    siguienteBtn.classList.add("btn", "btn-primary", "my-2", "d-flex", "align-item-end", "justify-content-end", "btn__cards")
     siguienteBtn.addEventListener('click',()=> siguiente())
    buttons.appendChild(siguienteBtn);
 }
@@ -34,6 +34,7 @@ botones()
 
 
 const basicCard = (array) => {
+  cleanList()
   const section = document.createElement("section");
   section.classList.add("container", "my-5");
   document.body.appendChild(section);
@@ -44,15 +45,16 @@ const basicCard = (array) => {
   
   const title = document.createElement("h1");
   title.textContent = "Characters";
-  container.classList.add("justify-content-center", "align-middle","text-white");
+  container.classList.add("justify-content-center", "align-middle","text-white", "title__characters");
   container.appendChild(title);
   
   card(array, container); 
   
+  
 };
 
 const card =(array, container) =>{
-
+  
   array.forEach((element) => {
     const card = document.createElement("div");
     card.id = element.id;
@@ -85,8 +87,24 @@ const card =(array, container) =>{
     verMas.textContent = "Ver mas"
     verMas.classList.add("btn", "btn-primary", "my-2", "d-block", "verMasButton")
     verMas.id = element.id
+    verMas.addEventListener('click', () => {
+      window.location.href = `../details.html?id=${element.id}`;
+  });
     title.appendChild(verMas);
   });
 }
+
+
+
+const cleanList = () => {
+  const toRemove = document.querySelectorAll('.card');
+  toRemove.forEach((element) => {
+      element.remove();
+  });
+  const title = document.querySelectorAll('.title__characters')
+  title.forEach((element) => {
+    element.remove();
+});
+};
 
 export default basicCard;

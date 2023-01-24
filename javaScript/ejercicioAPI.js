@@ -6,7 +6,6 @@ const getCharacters = async(page) =>{
     const data = await response.json();
     let character = data.results;
     basicCard(character);
-    console.log(url)
 }
 getCharacters();
 
